@@ -32,6 +32,15 @@ $(document).ready(()=>{
         $('#chat-input').val("");
       }
     });
+    $('#new-channel-btn').click( () => {
+      let newChannel = $('#new-channel-input').val();
+    
+      if(newChannel.length > 0){
+        // Emit the new channel to the server
+        socket.emit('new channel', newChannel);
+        $('#new-channel-input').val("");
+      }
+    });
     // socket listeners
     //Refresh the online user list
     socket.on('user has left', (onlineUsers) => {
